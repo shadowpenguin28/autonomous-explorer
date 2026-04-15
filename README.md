@@ -24,16 +24,33 @@ vcs import src < src/husarion_ugv_ros/husarion_ugv/${HUSARION_ROS_BUILD_TYPE}_de
 sudo rosdep init
 rosdep update --rosdistro $ROS_DISTRO
 rosdep install --from-paths src -y -i
+```
 
+Go to file [setup_marsyard.sh](setup_marsyard.sh), copy it locally and run it:
+
+```bash
+chmod +x ./setup_marsyard.sh 
+
+./setup_marsyard.sh
+```
+
+Build:
+
+```bash
 source /opt/ros/$ROS_DISTRO/setup.bash
 colcon build --symlink-install --packages-up-to husarion_ugv --cmake-args -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF
 
 source install/setup.bash
 ```
 
-## Important Topics 
 
-
+## How to launch
+```bash
+cd ~/husarion_ws
+# Highly reccomended that you add this to your bashrc
+source /opt/ros/$ROS_DISTRO/setup.bash
+ros2 launch husarion_ugv_gazebo simulation.launch.py
+```
 
 
 ## About the Challenge - Exploration Task
