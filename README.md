@@ -26,3 +26,4 @@ and the topic  `/cv2_feed/<camera>/img_depth` (for processed depth cam image)
 
 To run the aruco detection node:
 `ros2 run visual_perception detect_marker`
+This node publishes on `/visual_perception/detected_markers`
