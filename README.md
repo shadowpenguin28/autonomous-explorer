@@ -19,10 +19,10 @@ After building, source the overlay:
 
 Now run the preprocessor node 
 `ros2 run visual_perception camera_preprocessor`
-One can use the topics /cv2_feed/<camera>/img_color (for processed rgb image)
-and the topic  /cv2_feed/<camera>/img_depth (for processed depth cam image)
+One can use the topics `/cv2_feed/<camera>/img_color` (for processed rgb image)
+and the topic  `/cv2_feed/<camera>/img_depth` (for processed depth cam image)
 
-<camera> is the one of the cameras listed in `src/visual_perception/config/camera_params.yaml` in the property `active_cameras`
+`<camera>` is the one of the cameras listed in `src/visual_perception/config/camera_params.yaml` in the property `active_cameras`
 
 To run the aruco detection node:
 `ros2 run visual_perception detect_marker`
