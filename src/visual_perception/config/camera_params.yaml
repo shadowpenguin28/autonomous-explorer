@@ -1,0 +1,7 @@
+# visual-perception/config/camera_params.yaml
+target_resolution: [640, 480]
+target_fps: 10.0
+active_cameras: ["front_cam", "rear_cam", "left_cam", "right_cam"]
+enable_undistortion: true
+publish_compressed: true
+jpeg_quality: 80

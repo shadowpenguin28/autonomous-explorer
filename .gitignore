@@ -1,0 +1,70 @@
+# ==========================================
+# ROS2 / Colcon Build Artifacts
+# ==========================================
+build/
+install/
+log/
+
+# ==========================================
+# C++ / CMake Generated Files
+# ==========================================
+.cmake/
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Makefile
+cmake_install.cmake
+*.manifest
+*.spec
+
+# ==========================================
+# Python Compiled Files
+# ==========================================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.egg-info/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg
+
+# ==========================================
+# Code Editors and IDEs (Optional but Recommended)
+# ==========================================
+# VS Code
+.vscode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+
+# CLion / IntelliJ
+.idea/
+
+# Editor backup files
+*~
+*.swp
+*.swo
+
+# ==========================================
+# OS Specific Files
+# ==========================================
+.DS_Store
+Thumbs.db
+
+
+# HUSARION SPECIFIC FILES DON'T TRACK THESE
+behaviortree_ros2/
+husarion_components_description/
+husarion_controllers/
+husarion_gz_worlds/
+husarion_ugv_ros/
+.ruff_cache/
