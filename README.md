@@ -23,11 +23,11 @@ One can use the topics `/cv2_feed/<camera>/img_color` (for processed rgb image)
 and the topic  `/cv2_feed/<camera>/img_depth` (for processed depth cam image) \
 
 The topic: `/cv2_feed/<camera>/camera_info` can be utilised to get updated camera intrinsics after undistortion (so the distortion coefficients are now zero) and the camera matrix is different
-`IMPORTANT` DO NOT USE RAW IMG ALONG WITH UPDATED CAMERA INTRINSICS OR THE PROCESSED IMG WITH RAW CAMERA INTRINSICS
+`IMPORTANT` DO NOT USE RAW IMG ALONG WITH UPDATED CAMERA INTRINSICS OR THE PROCESSED IMG WITH RAW CAMERA INTRINSICS \
 
 `<camera>` is the one of the cameras listed in `src/visual_perception/config/camera_params.yaml` in the property `active_cameras`
-
-To run the aruco detection node:
+_____
+To run the aruco detection node: \
 `ros2 run visual_perception detect_marker`
 
 The visual perception module detects ArUco markers, calculates their 3D pose in the world, and publishes them.
@@ -44,10 +44,19 @@ string camera_source
 float32 confidence
 ```
 marker_id: The ID read from the ArUco tag. According to the rules, these are numbered sequentially clockwise around the boundary. \
-pose: A standard geometry_msgs/PoseStamped. \
-**`IMPORTANT`**: The pose is already transformed into the map frame.
-It represents the 3D center of the marker in the world. 
+pose: A standard geometry_msgs/PoseStamped.
+**IMPORTANT**: The pose is already transformed into the map frame.
+It represents the 3D center of the marker in the world. \
+**camera_source**: e.g., front_cam, rear_cam. Useful for debugging. \
+**confidence**: Currently defaults to 1.0. Future updates will scale this based on distance/reprojection error for the Nav stack. \
+The detection node also expects a **map frame**, so complete a tf tree for : \
+`map -> odom -> base_link -> body_link -> ... -> {camera}_color_optical_frame` \
+Otherwise the pose transformation step will not work. \
 
-camera_source: e.g., front_cam, rear_cam. Useful for debugging.\
+**Testing Without SLAM**
+If you want to test the perception output before SLAM is fully integrated, you can fake the SLAM transform by running:
 
-confidence: Currently defaults to 1.0. Future updates will scale this based on distance/reprojection error for the Nav stack.
+```bash
+ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 map base_link
+```
+_____
