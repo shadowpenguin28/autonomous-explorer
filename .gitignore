@@ -4,7 +4,10 @@
 build/
 install/
 log/
-
+frames*
+.~lock.frames*
+requirements.txt
+test*
 # ==========================================
 # C++ / CMake Generated Files
 # ==========================================
@@ -20,6 +23,7 @@ cmake_install.cmake
 # ==========================================
 # Python Compiled Files
 # ==========================================
+.venv/
 __pycache__/
 *.pyc
 *.pyo
